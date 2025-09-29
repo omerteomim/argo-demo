@@ -1,0 +1,7 @@
+image:
+  repository: httpd
+  tag: latest
+service:
+  type: NodePort
+  port: 80
+  NodePort: 30035

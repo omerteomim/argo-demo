@@ -1,0 +1,7 @@
+image:
+  repository: nginx
+  tag: 1.21.6
+service:
+  type: NodePort
+  port: 80
+  NodePort: 30036

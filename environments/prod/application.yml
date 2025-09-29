@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-application
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://github.com/omerteomim/argo-demo.git'
+    targetRevision: HEAD
+    path: chart
+    helm:
+      valueFiles:
+      - environments/prod/values.yml
+        destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
